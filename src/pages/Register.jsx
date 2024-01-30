@@ -8,14 +8,13 @@ const RegisterPage = () => {
     username: "",
     email: "",
     password: "",
-    confirmPassword: "",
   });
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", {
+      const response = await fetch("http://localhost:3000/api/users/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -100,24 +99,7 @@ const RegisterPage = () => {
               placeholder="Password"
             />
           </div>
-          <div>
-            <label htmlFor="password-confirm" className="sr-only">
-              Confirm Password
-            </label>
-            <input
-              id="password-confirm"
-              name="password-confirm"
-              type="password"
-              autoComplete="new-password"
-              value={form.confirmPassword}
-              onChange={(e) =>
-                setForm({ ...form, confirmPassword: e.target.value })
-              }
-              required
-              className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10 sm:text-sm"
-              placeholder="Confirm Password"
-            />
-          </div>
+
           <div>
             <button
               type="submit"
